@@ -18,6 +18,12 @@ body{
   padding: 0 24px;
 }
 
+@media (max-width: 768px) {
+  .container {
+    max-width: 65ch;
+  }
+}
+
 /* =========================
    TOP + BOTTOM DUKE BANNER
    ========================= */
