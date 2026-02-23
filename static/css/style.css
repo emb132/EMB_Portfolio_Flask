@@ -274,15 +274,15 @@ body{
   flex-wrap:wrap;
 }
 .footer-logos img{
-  height:56px;
-  max-width:180px;
+  height:90px;
+  max-width:250px;
   object-fit:contain;
 }
 .footer-logos img[src$="NIH_icon.png"],
 .footer-logos img[src$="nsf_icon.png"],
 .footer-logos img[src$="solar_unsoiled.png"]{
-  height:48px;
-  max-width:140px;
+  height:90px;
+  max-width:250px;
 }
 
 /* =========================
