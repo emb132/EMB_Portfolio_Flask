@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block hero %}
+{# optional: keep your existing hero on this page - or remove this block to use base hero #}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<section class="projects-section">
+  <h2>Projects</h2>
+
+  <div class="projects-grid">
+    {% for p in site.projects %}
+    <a class="project-card" href="{{ url_for('project_detail', project_id=p.id) }}">
+      <div class="project-image" style="background-image: url('{{ p.image }}');" role="img" aria-label="{{ p.title }}"></div>
+      <div class="project-card-body">
+        <h3 class="project-card-title">{{ p.title }}</h3>
+        <p class="project-card-overview">{{ p.overview }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ site.name }} — {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- TOP DUKE BLUE BANNER -->
+  <header class="top-banner">
+    <div class="container banner-inner">
+      <a class="brand-link" href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='images/headshot.jpeg') }}"
+             alt="{{ site.name }}"
+             class="brand-headshot-small">
+        <div class="brand-text">
+          <div class="brand-name">{{ site.name }}</div>
+          <div class="brand-title">{{ site.title }}</div>
+        </div>
+      </a>
+
+      <nav class="top-nav">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('projects') }}">Projects</a>
+        <a href="{{ url_for('cv') }}">CV</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+{% block hero %}{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+
+  <!-- FOOTER (light background with funder logos/copyright) -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-logos">
+        <img src="{{ url_for('static', filename='images/NIH_icon.png') }}" alt="NIH">
+        <img src="{{ url_for('static', filename='images/nsf_icon.png') }}" alt="NSF">
+        <img src="{{ url_for('static', filename='images/superfund_icon.png') }}" alt="Superfund">
+        <img src="{{ url_for('static', filename='images/premier_logo.png') }}" alt="PreMiEr">
+        <img src="{{ url_for('static', filename='images/solar_unsoiled.png') }}" alt="Solar Unsoiled">
+
+      </div>
+      <div class="footer-text">
+         {{ current_year }} &copy; {{ site.name }}
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

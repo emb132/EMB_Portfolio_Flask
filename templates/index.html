@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{# HERO: chapel background with overlay; large headshot overlaps halfway #}
+{% block hero %}
+<header class="chapel-hero"
+        style="background-image: url('{{ url_for('static', filename='images/chapel.png') }}')">
+
+  <div class="chapel-overlay">
+    <div class="hero-inner container">
+
+      <!-- LEFT: large overlapping headshot -->
+      <div class="hero-left">
+        <img src="{{ url_for('static', filename='images/headshot.jpeg') }}"
+             alt="Headshot"
+             class="hero-headshot-large overlap">
+      </div>
+
+      <!-- RIGHT: name, title, short intro, roles -->
+      <div class="hero-right">
+        <h1 class="hero-title">{{ site.name }}</h1>
+
+
+        <!-- short intro (use site.intro from data.py if provided) -->
+        <p class="hero-intro">{{"I am a PhD researcher focused on microbiome engineering, studying how fungi can be harnessed for environmental bioremediation while also mitigating their impacts on renewable energy infrastructure" }}</p>
+
+        <div class="roles">
+          <strong>Research interests:</strong>
+          <span>{{ site.research_interests or "Microbial remediation · Metagenomics · Mycology · Environmental Litigation" }}</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a class="btn" href="{{ url_for('projects') }}">Explore Projects</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{# MAIN: About Me replaces Projects per your request #}
+{% block content %}
+<section class="about-section">
+  <div class="about-grid">
+    <!-- Left column intentionally left blank because headshot overlaps above -->
+    <div class="about-left"></div>
+
+    <!-- Right: main about content aligns under the right text block -->
+    <div class="about-right">
+      <h2>About Me</h2>
+
+      <!-- Use site.about from data.py if available; otherwise fallback placeholder -->
+      <div class="about-text">
+        {{ site.about or
+           "I am a third-year Ph.D. candidate at Duke University advised by Dr. Claudia K. Gunsch.
+        I have over five years of research experience in microbiome engineering, mycology, microbial ecology,
+        and environmental biotechnology. My doctoral research focuses on fungal microbiome engineering, with
+        two primary projects: encapsulating microbes to enhance degradation of persistent
+        contaminants and characterizing fungal communities that persist on solar panels. I have led and collaborated
+        interdisciplinary projects with academic and industry partners including Solar Unsoiled, Duke’s General Robotics
+        Lab, and Duke’s local firefighter department. Our findings are published in American Microbiology Society,
+        Journal of Occupational and Environmental Hygiene, and Nature Communications. Beyond the laboratory, I am
+        increasingly interested in the intersection of environmental science and litigation.
+        Many of the contaminants I study have direct implications for public health, occupational exposure, and
+        environmental liability. I currently work part time in Duke’s Environmental Law and Policy Clinic as an
+        environmental consultant, helping to provide scientific analysis and technical expertise to inform legal
+        strategy and support clients facing environmental legal challenges
+        Outside the lab, I love to play soccer, practice my pottery skills, and read!
+" }}
+      </div>
+
+      <h3>Current Roles</h3>
+      <ul class="roles-list">
+        <li>3rd Year PhD Candidate - Duke Department of Civil and Environmnetal Engineering</li>
+        <li>Environmental Litigation Consultant Intern - Duke Law School</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+{# site-wide news moved to after page content #}
+{% if site.news and site.news|length > 0 %}
+  <div class="site-news-wrapper">
+    <h3 class="news-header">Current News</h3>
+    <div class="site-news">
+      <div class="news-card">
+        <span class="news-date">{{ site.news[0].date }}</span>
+        <span class="news-text">{{ site.news[0].body }}</span>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% endblock %}

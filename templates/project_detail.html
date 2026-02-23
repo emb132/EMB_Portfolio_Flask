@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block hero %}
+<header class="project-header" style="background-image: url('{{ project.image }}')">
+  <div class="project-header-overlay">
+    <div class="project-header-inner container">
+      <h1 class="project-title">{{ project.title }}</h1>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<main class="container project-content">
+
+  <div class="project-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="project-main">
+
+      <div class="project-overview">
+        <h2>Summary</h2>
+        <p>{{ project.summary }}</p>
+      </div>
+
+      <div class="project-body">
+        {{ project.body | safe }}
+      </div>
+
+      {% if project.collaborators %}
+      <section class="project-collabs">
+        <h3>Collaborators</h3>
+        <ul class="collab-list">
+          {% for c in project.collaborators %}
+          <li class="collab-item">
+            {% if c.url %}
+              <a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.name }}</a>
+            {% else %}
+              {{ c.name }}
+            {% endif %}
+            {% if c.affiliation %} <span class="muted"> — {{ c.affiliation }}</span>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+    </div> <!-- END project-main -->
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="project-sidebar">
+
+      <div class="sidebar-section sidebar-pubs">
+        <h4>Publications</h4>
+        {% if project.publications %}
+        <ul class="pub-list">
+          {% for pub in project.publications %}
+          <li>
+            {% if pub.url %}
+              <a class="pub-link" href="{{ pub.url }}" target="_blank" rel="noopener">{{ pub.title }}</a>
+            {% elif pub.file %}
+              <a class="pub-link" href="{{ pub.file }}" target="_blank" rel="noopener">{{ pub.title }}</a>
+            {% else %}
+              {{ pub.title }}
+            {% endif %}
+            {% if pub.venue %}
+              <div class="pub-meta muted">
+                {{ pub.venue }}{% if pub.year %}, {{ pub.year }}{% endif %}
+              </div>
+            {% elif pub.year %}
+              <div class="pub-meta muted">{{ pub.year }}</div>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+          <div class="empty-muted">No publications listed.</div>
+        {% endif %}
+      </div>
+
+      <div class="sidebar-section sidebar-presentations">
+        <h4>Presentations</h4>
+        {% if project.presentations %}
+        <ul class="pub-list">
+          {% for pr in project.presentations %}
+          <li>
+            {% if pr.poster %}
+              <a class="pub-link" href="{{ pr.poster }}" target="_blank" rel="noopener">{{ pr.title }}</a>
+            {% elif pr.file %}
+              <a class="pub-link" href="{{ pr.file }}" target="_blank" rel="noopener">{{ pr.title }}</a>
+            {% else %}
+              {{ pr.title }}
+            {% endif %}
+            <div class="pub-meta muted">
+              {% if pr.type %}{{ pr.type }}{% endif %}
+              {% if pr.venue %} — {{ pr.venue }}{% endif %}
+              {% if pr.date %}, {{ pr.date }}{% endif %}
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+          <div class="empty-muted">No presentations listed.</div>
+        {% endif %}
+      </div>
+
+    </aside>
+
+  </div> <!-- END project-grid -->
+
+  <p>
+    <a class="btn outline-blue" href="{{ url_for('projects') }}">
+      Back to projects
+    </a>
+  </p>
+
+</main>
+{% endblock %}

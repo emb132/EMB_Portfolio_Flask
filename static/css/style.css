@@ -1,0 +1,785 @@
+:root{
+  --duke-blue: #001A57;
+  --muted: #6b7280;
+  --container-width: 1200px;
+}
+
+/* Basic reset / layout */
+*{ box-sizing: border-box; }
+body{
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  margin:0;
+  color:#111827;
+  background:#ffffff;
+}
+.container{
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =========================
+   TOP + BOTTOM DUKE BANNER
+   ========================= */
+.top-banner,
+.bottom-banner{
+  background: var(--duke-blue);
+  color: white;
+  position: relative;
+  z-index: 100;
+}
+.banner-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:26px 0;
+}
+.brand-link{ display:flex; align-items:center; text-decoration:none; color:white; }
+.brand-headshot-small{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.9);
+  margin-right:12px;
+}
+.brand-name{ font-weight:700; }
+.brand-title{ font-size:18px; opacity:0.85; }
+.top-nav a{ color:white; margin-left:20px; text-decoration:none; font-weight:500; font-size:22px; }
+.top-nav a:hover{ text-decoration:underline; }
+
+/* =========================
+   Chapel background on Home
+   ========================= */
+.chapel-hero{
+  height:560px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+.chapel-overlay{
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.05)
+  );
+  height:100%;
+  position:relative;
+}
+
+/* wrapper to center hero content area */
+.hero-inner{
+  position:relative;
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* =========================
+   LARGE HEADSHOT (anchored to chapel)
+   ========================= */
+.hero-headshot-large{
+  width:320px;
+  height:400px;
+  object-fit:cover;
+  border-radius:14px;
+  border:8px solid white;
+  box-shadow:0 25px 60px rgba(0,0,0,0.35);
+  position:absolute;
+  left:24px;
+  bottom:-690px;     /* half of 520 -> positions center on chapel bottom */
+  z-index:50;
+}
+
+/* =========================
+  TEXT (aligned automatically to the right of the headshot)
+   ========================= */
+.hero-right{
+  position:absolute;
+  left:400px;        /* 420px image + 40-60px spacing */
+  top:310px;
+  max-width:700px;
+  color:white;
+}
+.hero-title{
+  font-size:44px;
+  font-weight:800;
+  margin:0 0 8px 0;
+}
+.hero-subtitle{
+  margin:0 0 14px 0;
+  font-size:24px;
+  opacity:0.9;
+}
+.hero-intro{
+  margin:10px 0 18px 0;
+  font-size:22px;
+  line-height:1.6;
+  color:rgba(255,255,255,0.95);
+}
+.roles{ font-size:22px; margin-top:6px; }
+.hero-ctas{ margin-top:28px; display:flex; gap:16px; } /*margin between intro and buttons on home
+/* Bigger hero buttons */
+.btn{
+  padding:18px 28px;        /* bigger vertical & horizontal padding */
+  font-size:20px;           /* larger text */
+  font-weight:700;
+  border-radius:8px;
+  display:inline-block;
+  transition:all 0.2s ease;
+}
+
+/* Solid Duke button */
+.btn{
+  background:var(--duke-blue);
+  color:white;
+}
+
+/* White with Duke outline */
+.btn.outline-blue{
+  background:white;
+  color:var(--duke-blue);
+  border:3px solid var(--duke-blue);
+}
+
+/* Hover effects */
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+.btn.outline-blue:hover{
+  background:var(--duke-blue);
+  color:white;
+}
+
+/* =========================
+   MAIN CONTENT OFFSET (about me on home)
+   give room for the overlapping headshot
+   ========================= */
+.main-content{
+  margin-top:150px;   /* adjust if you change headshot size/position */
+}
+/* =========================
+   ABOUT SECTION (LEFT ALIGNED)
+   ========================= */
+.about-section {
+  margin-top: 150px;
+  padding-top: 20px;
+  max-width: 1000px;   /* controls width */
+  margin-left: auto;
+  margin-right: auto; /* centers the whole section */
+}
+
+.about-section h2{
+  font-size:24px;
+  font-weight:700;
+  margin-bottom:18px;
+  text-align:left;
+}
+
+.about-text {
+  max-width: 1000px;
+  margin: 0;
+  font-size: 22px;   /* 22px is slightly large for long paragraphs */
+  line-height: 1.8;
+  color: #1f2937;
+}
+
+.roles-list{
+  list-style:none;
+  padding:0;
+  margin-top:18px;
+  font-size:22px;
+  text-align:left;
+}
+
+.roles-list li{
+  margin-bottom:10px;
+}
+
+/* =========================
+   NEWS
+   ========================= */
+/* Simple News Box */
+.site-news {
+  max-width: 1000px;      /* SAME as .about-section max-width */
+  margin: 24px auto 0 auto;   /* center it exactly like About */
+}
+
+.news-card {
+  background: #ffffff;
+  border-left: 5px solid var(--duke-blue);
+  padding: 14px 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(3,10,34,0.04);
+  font-size: 22px;      /* controls BOTH date + body size */
+  line-height: 1.5;
+}
+
+.news-date {
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.news-text {
+  font-weight: 500;
+}
+/* News heading + wrapper */
+.site-news-wrapper { max-width: 1000px; margin: 24px auto 0; } /* matches .about-section */
+.news-header {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: #111827;
+}
+
+/* keep existing .site-news/.news-card rules (example) */
+.site-news { max-width: 1000px; margin: 0; }
+.news-card {
+  background:#fff;
+  border-left: 5px solid var(--duke-blue);
+  padding: 14px 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(3,10,34,0.04);
+  font-size: 22px;
+  display:block;
+}
+.news-date { font-weight:700; margin-right:10px; }
+.news-text { font-weight:500; }
+/* =========================
+   FUNDERS (footer logos controlled here too)
+   ========================= */
+.funders-section{ margin-top:50px; text-align:center; }
+.funders-grid{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.funders-grid img{
+  height:70px;
+  object-fit:contain;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+  opacity:0.96;
+}
+.funders-grid img:hover{ transform:translateY(-4px); }
+
+/* Footer-specific logos (consistent with funders-grid) */
+.footer-logos{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.footer-logos img{
+  height:56px;
+  max-width:180px;
+  object-fit:contain;
+}
+.footer-logos img[src$="NIH_icon.png"],
+.footer-logos img[src$="nsf_icon.png"],
+.footer-logos img[src$="solar_unsoiled.png"]{
+  height:48px;
+  max-width:140px;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.site-footer{
+  background:#f8f9fb;
+  padding:30px 0;
+  margin-top:40px;
+  border-top:1px solid #e5e7eb;
+}
+.footer-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+
+/* =========================
+   RESPONSIVE BEHAVIOR
+   ========================= */
+@media (max-width:1100px){
+
+  .hero-headshot-large{
+    width:300px;
+    height:380px;
+    bottom:-190px;
+    left:18px;
+  }
+
+  .hero-right{
+    left:360px;
+    top:120px;
+    max-width:420px;
+  }
+
+  .main-content{
+    margin-top:240px;
+  }
+}
+
+@media (max-width:800px){
+
+  /* stack hero: headshot above text */
+  .hero-headshot-large{
+    position:relative;
+    bottom:auto;
+    left:auto;
+    margin:40px auto 0 auto;
+    display:block;
+  }
+
+  .hero-right{
+    position:relative;
+    left:auto;
+    top:auto;
+    margin-top:28px;
+    color:#111827;
+    padding:0 24px;
+  }
+
+  .chapel-overlay{
+    padding-bottom:40px;
+  }
+
+  .main-content{
+    margin-top:0;
+  }
+}
+
+@media (max-width:600px){
+  .hero-title{ font-size:26px; }
+  .brand-headshot-small{ display:none; }
+  .funders-grid img{ height:70px; }
+  .footer-logos img{ height:60px; }
+}
+
+/* ---------- Projects (bigger tiles + typography) ---------- */
+/* Constrain projects section to the main container width and center it */
+.projects-section {
+  max-width: var(--container-width); /* same as .container (1100px) */
+  margin: 36px auto 0;               /* center the whole section */
+  padding: 0 24px;                   /* same horizontal padding as .container */
+  box-sizing: border-box;
+}
+
+/* Ensure the grid doesn't overflow its container */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.projects-section h2 { font-size:32px; margin-bottom:18px; text-align:left; font-weight:800; }
+
+
+/* Card - larger + bolder */
+.project-card {
+  display:block;
+  border-radius:12px;
+  overflow:hidden;
+  background:white;
+  text-decoration:none;
+  color:inherit;
+  border:1px solid #e6e6e6;
+  transition: transform .18s ease, box-shadow .18s ease;
+  min-height: 360px;            /* ensures even card heights */
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 50px rgba(2,6,23,0.10);
+}
+
+/* image area: taller for visual impact */
+.project-image {
+  width:100%;
+  height:280px;                /* increased from 180 */
+  background-size:cover;
+  background-position:center;
+}
+
+/* card body */
+.project-card-body {
+  padding:16px 18px;
+}
+.project-card-title {
+  font-size:22px;              /* larger title */
+  margin:0 0 8px 0;
+  font-weight:700;
+}
+.project-card-overview {
+  margin:0;
+  color:#4b5563;
+  font-size:20px;              /* larger overview text */
+  line-height:1.5;
+}
+
+/* Project detail header (no change needed but sized up) */
+.project-header{ height:380px; background-size:cover; background-position:center; position:relative;}
+.project-header-overlay{ background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.02)); height:100%; display:flex; align-items:flex-end; }
+.project-header-inner{ padding:26px 24px; }
+.project-title{ color:white; font-size:34px; margin:0; }
+
+/* detail body text slightly larger for legibility */
+.project-body{ margin-top:18px; line-height:1.75; color:#333; font-size:36px !important; }
+.project-collabs{ margin-top:6px; line-height:1.75; color:#333; font-size:22px !important; }
+/* responsive: keep single column on narrow screens */
+@media (max-width:900px) {
+  .projects-grid { grid-template-columns:1fr; }
+  .project-image { height:260px; }
+  .project-card { min-height:auto; }
+  .project-header { height:260px; }
+}
+/* =========================
+   Project summary (featured) styling
+   Targets the <p> inside .project-overview which holds project.summary
+   ========================= */
+
+.project-overview {
+  margin-top: 12px;
+  margin-bottom: 10px;
+  max-width: 800px;         /* keeps the summary from stretching too wide */
+}
+
+.project-overview h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Make the summary large and prominent */
+.project-overview p {
+  font-size: 22px;          /* pick 20-26px depending on how big you want it */
+  line-height: 1.85;
+  color: #111827;
+  font-weight: 500;
+  margin: 0 0 14px 0;
+  max-width: 900px;
+  /* fallback stronger override if other rules conflict */
+  font-size: 22px !important;
+}
+
+/* If you want the summary even larger, increase this value (example: 26px) */
+/* .project-overview p { font-size: 26px !important; } */
+
+/* Optionally make only the first paragraph extra-large (if you have multiple paragraphs): */
+.project-overview p:first-of-type {
+  font-size: 22px !important;
+  font-weight: 500;
+}
+
+/* Small screens: reduce so it still fits */
+@media (max-width: 900px) {
+  .project-overview p,
+  .project-overview p:first-of-type {
+    font-size: 18px !important;
+    line-height: 1.7;
+    max-width: 100%;
+  }
+}
+
+/* CV section ============== */
+
+.cv-section{
+  margin-top:40px;
+}
+
+.cv-section h1{
+  font-size:32px;
+  margin-bottom:20px;
+}
+
+.cv-container{
+  box-shadow:0 10px 40px rgba(0,0,0,0.08);
+  border-radius:8px;
+  overflow:hidden;
+}
+/* ===== CONTACT: PROFESSIONAL STYLES (FULL) ===== */
+
+/* Remove hero banner if present */
+.contact-hero,
+.contact-hero-overlay {
+  display: none !important;
+}
+
+.contact-hero-inner {
+  padding: 0px;
+}
+
+.contact-hero-title {
+  font-size: 0px;
+  margin: 0 0 6px 0;
+  color: white;
+}
+
+.contact-hero-sub {
+  margin: 0;
+  color: rgba(255,255,255,0.90);
+}
+
+/* Main container (centered wrapper that holds both the social row and the card) */
+.contact-main {
+  max-width: 1000px;
+  margin: 60px auto;     /* center it on the page */
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  align-items: center;    /* center children horizontally */
+  gap: 18px;              /* vertical spacing between social row and card */
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* =========================
+   SOCIAL ROW (centered over contact-card)
+   ========================= */
+
+
+.social-row-top {
+  width: 100%;
+  max-width: 1100px;        /* match the card width below */
+  margin: 28px auto 28px;          /* center inside the wrapper */
+  display: flex;
+  justify-content: center; /* center buttons */
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+/* Buttons appearance */
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--duke-blue);
+  border: 2px solid rgba(0,26,87,0.12);
+  background: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+}
+
+/* icon sizing */
+.social-btn .icon {
+  width: 22px;
+  height: 22px;
+  color: var(--duke-blue);
+}
+
+.social-btn span {
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* hover state: subtle lift upward */
+.social-btn:hover {
+  transform: translateY(10px);
+  box-shadow: 0 12px 35px rgba(2,6,23,0.08);
+  background: #f8fafc;
+}
+
+
+
+/* =========================
+   CONTACT CARD (leave unchanged)
+   ========================= */
+
+.contact-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 18px 50px rgba(2,6,23,0.06);
+  overflow: hidden;
+  border: 1px solid #e6eef8;
+  box-sizing: border-box;
+}
+
+.contact-card-inner {
+  display: grid;
+  grid-template-columns: 1fr 440px; /* left descriptive column + right form column */
+  gap: 30px;
+  padding: 40px;
+  align-items: start;
+}
+
+/* left column header */
+.contact-left h2 {
+  margin-top: 0;
+  font-size: 36px;
+}
+/* left column text */
+.contact-left p {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.contact-left p {
+  color: #374151;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.contact-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #374151;
+}
+
+.contact-meta li {
+  margin-bottom: 8px;
+}
+
+/* form rows */
+.contact-form .form-row {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 14px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #fbfdff;
+  color: #0f172a;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0,26,87,0.08);
+  border-color: var(--duke-blue);
+}
+
+/* actions */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.btn-primary {
+  background: var(--duke-blue);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.btn-outline {
+  background: white;
+  border: 2px solid var(--duke-blue);
+  color: var(--duke-blue);
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: var(--duke-blue);
+  color: white;
+}
+
+/* Responsive: stack the card on small screens */
+@media (max-width: 1000px) {
+  .contact-main { margin: 40px 12px; }
+  .social-row-top { gap: 12px; }
+  .social-btn { padding: 10px 14px; font-size: 22px; }
+  .contact-card-inner { padding: 22px; grid-template-columns: 1fr; }
+}
+
+  .contact-card {
+    margin: 0 18px;
+  }
+
+  .social-btn {
+    padding: 10px 14px;
+    font-size: 22px;
+  }
+
+
+/* --- Project detail two-column layout (robust) --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px; /* flexible left + fixed right */
+  gap: 40px;
+  align-items: start;
+  margin-top: 24px;
+  box-sizing: border-box;
+}
+
+.project-main {
+  min-width: 0;                  /* critical to prevent overflow pushing sidebar down */
+  overflow-wrap: break-word;
+}
+
+/* Make images, tables, iframes, pre blocks responsive inside project body */
+.project-body img,
+.project-body iframe,
+.project-body table,
+.project-body pre {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Sidebar styling */
+.project-sidebar {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  background: #fbfdff;
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid #e6eef9;
+  position: sticky;
+  top: 120px; /* adjust if your header height differs */
+  align-self: start;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+/* Publications / presentations styling */
+.sidebar-section h4 { margin: 0 0 14px 0; font-size: 22px; color: var(--duke-blue); }
+.pub-list { list-style: none; margin:0; padding:0; }
+.pub-list li { margin: 8px 0; }
+.pub-link { text-decoration: none; font-weight: 600; display: inline-block; color: inherit; font-size: 18px; }
+.pub-link:hover { text-decoration: underline; }
+.pub-meta { font-size: 16px; color: var(--muted); margin-top: 6px; }
+
+/* Responsive fallback */
+@media (max-width: 900px) {
+  .project-grid { grid-template-columns: 1fr; }
+  .project-sidebar { position: static; max-width: none; margin-top: 20px; top: auto; }
+}
+
+/* Collaborators list style */
+.collab-list { list-style: none; margin: 0; padding: 0; display:flex; flex-wrap:wrap; gap:8px; }
+.collab-item { background:#f3f6ff; padding:10px 20px; border-radius:14px; font-size:22px; }
+.collab-item a { text-decoration: none; font-weight:600; color:inherit; }
+.collab-item .muted { font-weight:400; color:var(--muted); font-size:13px; margin-left:6px; }
+
