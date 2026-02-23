@@ -20,7 +20,8 @@ body{
 
 @media (max-width: 768px) {
   .container {
-    max-width: 65ch;
+    max-width: 100%;          /* always fits viewport */
+    padding: 0 16px;          /* a bit tighter on mobile */
   }
 }
 
